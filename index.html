@@ -132,6 +132,7 @@
   .node circle{fill:var(--bg); stroke:var(--accent); stroke-width:2; transition:stroke .65s ease, fill .65s ease}
   .node.core circle{fill:var(--accent); stroke:none}
   .node text{fill:var(--text); font-family:"Space Grotesk",sans-serif; font-size:12px; text-anchor:middle; transition:fill .65s ease}
+  .node .nsub{font-size:9px; fill:var(--muted); font-family:"Space Mono",monospace; letter-spacing:.04em}
   .node.core text{fill:var(--bg); font-weight:600; font-size:13px}
   .spoke{stroke:var(--line); stroke-width:2; transition:stroke .65s ease}
   .node,.spoke{opacity:0}
@@ -182,7 +183,34 @@
   .honours span{font-family:"Space Mono",monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); border-radius:14px; padding:6px 12px; transition:border-color .65s ease}
 
   footer{padding:11vh 24px 16vh; text-align:center}
+
+  /* get in touch */
+  .contact{padding:11vh 0 4vh}
+  .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; margin-top:32px}
+  .ccard{display:block; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px; text-decoration:none; transition:background-color .65s ease, border-color .3s ease, transform .3s ease}
+  a.ccard:hover{transform:translateY(-4px); border-color:var(--accent)}
+  .ccard .clabel{font-family:"Space Mono",monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); transition:color .65s ease}
+  .ccard .cval{display:block; margin-top:10px; font-family:"Fraunces",serif; font-weight:500; font-size:17px; color:var(--text); line-height:1.3; overflow-wrap:anywhere; transition:color .65s ease}
+  a.ccard:hover .cval{color:var(--accent)}
   footer p{font-family:"Space Mono",monospace; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted)}
+
+  /* impact band */
+  .impact{padding:2vh 0 5vh}
+  .impact .ihead{margin-bottom:22px}
+  .impact .htitle{font-family:"Fraunces",serif; font-weight:500; font-size:clamp(20px,3.2vw,30px); color:var(--text); margin-top:10px; line-height:1.15; transition:color .65s ease}
+  .igrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:14px}
+  .icard{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 16px; transition:background-color .65s ease, border-color .3s ease, transform .35s ease}
+  .icard:hover{transform:translateY(-4px); border-color:var(--accent)}
+  .inum{font-family:"Fraunces",serif; font-weight:600; font-size:clamp(30px,5vw,42px); line-height:1; color:var(--accent); transition:color .65s ease}
+  .imetric{margin-top:9px; font-family:"Space Mono",monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--text); transition:color .65s ease}
+  .ilever{margin-top:8px; font-size:12.5px; line-height:1.45; color:var(--muted)}
+  .icap{margin-top:22px; font-family:"Space Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+
+  /* project upgrades */
+  .barrier-wall{margin-top:28px}
+  .bw-title, .payoff-title{font-family:"Space Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:16px}
+  .payoff{margin-top:30px}
+  .pathnote{font-family:"Space Mono",monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent3); border:1px dashed var(--accent3); border-radius:14px; padding:5px 12px; display:inline-block; margin-top:14px; transition:color .65s ease, border-color .65s ease}
 
   /* first-flip reward */
   .reward-layer{position:fixed; inset:0; pointer-events:none; z-index:80}
@@ -211,7 +239,7 @@
   </nav>
 
   <section class="hero" id="hero">
-    <div class="eyebrow"><span class="dot"></span>Portfolio &middot; Issue 01</div>
+    <div class="eyebrow"><span class="dot"></span>Portfolio</div>
     <h1 class="name" id="name">Shantyl Castelino</h1>
     <p class="lead" data-jargon="I work at the intersection of science, business and AI, translating complexity into commercial strategy." data-human="Science is my first language. I translate it for everyone else." aria-live="polite"></p>
     <div class="human-extra">
@@ -234,6 +262,24 @@
     </div>
     <div class="scrollcue">The toggle follows you down<span class="chev"></span></div>
   </section>
+
+  <div class="wrap">
+    <section class="impact" id="impact">
+      <div class="ihead">
+        <div class="kicker" style="margin-bottom:0">By the numbers</div>
+        <div class="htitle">The proof, and what produced it.</div>
+      </div>
+      <div class="igrid">
+        <div class="icard"><div class="inum" data-pre="+" data-val="40" data-suf="%">+0%</div><div class="imetric">Client acquisition</div><div class="ilever">Rebuilt B2B onboarding in Salesforce</div></div>
+        <div class="icard"><div class="inum" data-val="95" data-suf="%">0%</div><div class="imetric">Client satisfaction</div><div class="ilever">Turned raw data into decision decks</div></div>
+        <div class="icard"><div class="inum" data-pre="+" data-val="30" data-suf="%">+0%</div><div class="imetric">Client retention</div><div class="ilever">Redesigned the client journey end-to-end</div></div>
+        <div class="icard"><div class="inum" data-val="70" data-suf="+">0+</div><div class="imetric">C-suite interviews</div><div class="ilever">Primary discovery with execs &amp; clinicians</div></div>
+        <div class="icard"><div class="inum" data-pre="+" data-val="30" data-suf="%">+0%</div><div class="imetric">Proposal win rate</div><div class="ilever">Built competitor &amp; maturity frameworks</div></div>
+        <div class="icard"><div class="inum" data-static="1st">1st</div><div class="imetric">Pharma client won</div><div class="ilever">Opened a new sector for the firm</div></div>
+      </div>
+      <div class="icap">Anervea AI &middot; GRG Health &middot; HiMedia &nbsp;|&nbsp; 2020&ndash;2024</div>
+    </section>
+  </div>
 
   <div class="wrap">
     <div class="kicker" style="padding-top:6vh">Experience</div>
@@ -282,48 +328,55 @@
     <section class="seg">
       <div class="label">MSc Dissertation &middot; Warwick &middot; 2025</div>
       <h2>AI-Driven Tripartite Ecosystems</h2>
-      <p class="row-lead" data-jargon="Investigated how AI-powered tripartite ecosystems reshape commercialization across regulated Pharma, MedTech and Big Tech partnerships." data-human="I asked the industry one question: when pharma, device makers and big tech join forces on AI, what actually makes it work?"></p>
+      <p class="row-lead" data-jargon="Surveyed global Pharma, MedTech and Big Tech leaders on AI-partnership maturity; regulatory complexity and data integration emerged as the dominant barriers to scaling tripartite ecosystems." data-human="Three industries that rarely speak the same language are trying to build AI together. Almost none are sitting it out. But what stalls them isn't the technology, it's who's allowed to touch the data."></p>
       <div class="human-extra">
         <div class="human-grid">
           <ul class="bullets">
-            <li>Surveyed industry professionals worldwide on these three-way AI partnerships.</li>
-            <li>Found 85% are already pursuing them, yet data governance and regulation keep stalling progress.</li>
-            <li>Built a practical roadmap for where these partnerships create real commercial value.</li>
+            <li>I surveyed Pharma, MedTech and Big Tech leaders worldwide on how far their AI partnerships have actually got.</li>
+            <li>Almost everyone is already in, but most are stuck piloting, not scaling.</li>
+            <li>The real blockers aren't technical. They're regulation, mismatched data systems, and no shared rulebook for the AI.</li>
           </ul>
           <div class="vis triwrap">
-            <svg class="tri" viewBox="0 0 240 250" xmlns="http://www.w3.org/2000/svg" aria-label="Pharma, MedTech and Big Tech meeting through AI">
+            <svg class="tri" viewBox="0 0 240 250" xmlns="http://www.w3.org/2000/svg" aria-label="Pharma brings science, MedTech brings device data, Big Tech brings AI infrastructure, meeting through AI">
               <line class="spoke" x1="120" y1="46" x2="120" y2="140"/>
               <line class="spoke" x1="44"  y1="200" x2="120" y2="140"/>
               <line class="spoke" x1="196" y1="200" x2="120" y2="140"/>
-              <g class="node"><circle cx="120" cy="46" r="8"/><text x="120" y="28">Pharma</text></g>
-              <g class="node"><circle cx="44" cy="200" r="8"/><text x="44" y="225">MedTech</text></g>
-              <g class="node"><circle cx="196" cy="200" r="8"/><text x="196" y="225">Big Tech</text></g>
+              <g class="node"><circle cx="120" cy="46" r="8"/><text x="120" y="26">Pharma</text><text class="nsub" x="120" y="40">science</text></g>
+              <g class="node"><circle cx="44" cy="200" r="8"/><text x="44" y="223">MedTech</text><text class="nsub" x="44" y="237">device data</text></g>
+              <g class="node"><circle cx="196" cy="200" r="8"/><text x="196" y="223">Big Tech</text><text class="nsub" x="196" y="237">AI infra</text></g>
               <g class="node core"><circle cx="120" cy="140" r="20"/><text x="120" y="145">AI</text></g>
             </svg>
             <div class="stat">
-              <div class="big">85%</div>
-              <div class="cap">of surveyed professionals are already pursuing AI partnerships.</div>
-              <div class="barriers"><span>Data governance</span><span>Regulation</span><span>Integration</span></div>
+              <div class="big">98%</div>
+              <div class="cap">are already building these AI partnerships. Only 2% are sitting it out.</div>
             </div>
+          </div>
+        </div>
+        <div class="barrier-wall">
+          <div class="bw-title">What stalls them: share of professionals naming each blocker</div>
+          <div class="vis vis-bars">
+            <div class="brow"><span class="bk">Regulation</span><div class="btrack"><i class="bfill" data-val="60"></i></div><span class="bv">60%</span></div>
+            <div class="brow"><span class="bk">Data systems</span><div class="btrack"><i class="bfill" data-val="45"></i></div><span class="bv">45%</span></div>
+            <div class="brow"><span class="bk">No shared rules</span><div class="btrack"><i class="bfill" data-val="36"></i></div><span class="bv">36%</span></div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="seg">
-      <div class="label">MSc Project Management &middot; Warwick &middot; 2025<span class="badge">Top 10 ranked</span></div>
+      <div class="label">MSc Project Management &middot; Warwick &middot; 2025</div>
       <h2>Pfizer Digital Clinical Trials Platform</h2>
-      <p class="row-lead" data-jargon="Designed a decentralised clinical-trials platform, applying Critical Path Analysis and integrated GDPR and FDA planning across the delivery lifecycle." data-human="I planned a way to run drug trials from people's homes, then mapped exactly what has to happen, and in what order."></p>
+      <p class="row-lead" data-jargon="Applied Critical Path Analysis across a 90-week work-breakdown structure to sequence zero-float dependencies for a decentralised clinical-trials platform, with GDPR and FDA planning built into the delivery lifecycle." data-human="I designed a way to run drug trials from a patient's sofa instead of a hospital, then worked out which tasks would sink the timeline if they slipped even a day, and front-loaded those."></p>
       <div class="human-extra">
         <div class="human-grid">
           <ul class="bullets">
-            <li>Designed a platform using phones, wearables and e-consent so patients take part from home.</li>
-            <li>Used critical path analysis to sequence the riskiest steps first.</li>
-            <li>Built GDPR and FDA compliance in from day one, not as an afterthought.</li>
+            <li>The trial runs from home: a phone app, wearables, e-consent and video check-ins replace the hospital visit.</li>
+            <li>I mapped the 90-week build and put the make-or-break tasks first, so one slip can't topple the rest.</li>
+            <li>And I defined upfront how we'd know it worked, so success wasn't left to guesswork.</li>
           </ul>
           <div class="vis">
             <div class="comp"><span>Mobile app</span><span>Wearables</span><span>e-Consent</span><span>Telemedicine</span></div>
-            <svg class="path2" viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg" aria-label="Critical path from MVP to roll-out">
+            <svg class="path2" viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg" aria-label="Critical path from MVP to roll-out over 90 weeks">
               <line class="ln" x1="30" y1="62" x2="490" y2="62"/>
               <line class="ln draw" x1="30" y1="62" x2="490" y2="62"/>
               <g class="ms"><circle cx="30"  cy="62" r="8"/><text class="num" x="30"  y="40">01</text><text x="30"  y="90">MVP</text></g>
@@ -331,6 +384,16 @@
               <g class="ms"><circle cx="337" cy="62" r="8"/><text class="num" x="337" y="40">03</text><text x="337" y="90">First live trial</text></g>
               <g class="ms"><circle cx="490" cy="62" r="8"/><text class="num" x="490" y="40">04</text><text x="490" y="90">Roll-out</text></g>
             </svg>
+            <span class="pathnote">90-week critical path &middot; zero float</span>
+          </div>
+        </div>
+        <div class="payoff">
+          <div class="payoff-title">The payoff, on a clock: how we'd know it worked</div>
+          <div class="vis vis-stats">
+            <div class="st"><b>&minus;30%</b><small>onboarding time &middot; 3 mo</small></div>
+            <div class="st"><b>&minus;20%</b><small>patient dropout &middot; 6 mo</small></div>
+            <div class="st"><b>&minus;25%</b><small>trial duration &middot; 12 mo</small></div>
+            <div class="st"><b>5+</b><small>therapy areas live &middot; 12 mo</small></div>
           </div>
         </div>
       </div>
@@ -378,6 +441,24 @@
     </section>
   </div>
 
+  <div class="wrap">
+    <section class="seg contact">
+      <div class="kicker">Get in touch</div>
+      <h2>Let's talk.</h2>
+      <p class="row-lead" data-jargon="Open to consulting and commercial strategy roles across Life Sciences, Pharma and MedTech." data-human="If you're building something in healthcare and need someone who can translate it, let's talk."></p>
+      <div class="contact-grid">
+        <a class="ccard" href="mailto:shantylcastelino@gmail.com">
+          <span class="clabel">Email</span>
+          <span class="cval">shantylcastelino@gmail.com</span>
+        </a>
+        <a class="ccard" href="https://www.linkedin.com/in/shantylcastelino" target="_blank" rel="noopener">
+          <span class="clabel">LinkedIn</span>
+          <span class="cval">in/shantylcastelino</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
   <footer><p>Built to be flipped &#8594;</p></footer>
 
 <script>
@@ -397,6 +478,8 @@
     "digital maturity":"How ready an organisation is to use digital tools well.",
     "payer constraint":"Limits set by whoever pays for the treatment, like insurers.",
     "adoption barriers":"The reasons useful technology does not get taken up.",
+    "work-breakdown structure":"Splitting a big project into small, trackable tasks.",
+    "zero-float":"Tasks with no slack, so any delay pushes the whole project back.",
     "B2B":"Business to business: selling to companies, not consumers."
   };
   const TERMS = Object.keys(GLOSSARY).sort((a,b)=>b.length-a.length);
@@ -515,6 +598,26 @@
     entries.forEach(en=>{ if(en.isIntersecting && mode==="human") playSection(en.target); });
   },{threshold:.35});
   document.querySelectorAll(".seg .human-extra").forEach(h=>segObs.observe(h));
+
+  // impact band: numbers count up once when the band scrolls into view (both modes)
+  (function(){
+    const band = document.getElementById("impact"); if(!band) return;
+    const nums = Array.from(band.querySelectorAll(".inum"));
+    function countUp(){
+      nums.forEach(n=>{
+        if(n.dataset.static) return;
+        const target = +n.dataset.val, pre = n.dataset.pre||"", suf = n.dataset.suf||"";
+        if(reduce){ n.textContent = pre+target+suf; return; }
+        let t0=null;
+        function step(ts){ if(!t0)t0=ts; const p=Math.min((ts-t0)/900,1), e=1-Math.pow(1-p,3);
+          n.textContent = pre+Math.round(target*e)+suf; if(p<1) requestAnimationFrame(step); }
+        requestAnimationFrame(step);
+      });
+    }
+    let done=false;
+    new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting && !done){ done=true; countUp(); } }),
+      {threshold:.4}).observe(band);
+  })();
 
   // signature cursor (desktop pointers only)
   if(matchMedia("(hover:hover) and (pointer:fine)").matches){
