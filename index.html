@@ -57,10 +57,10 @@
   .eyebrow{font-family:"Space Mono",monospace; font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:var(--muted); display:inline-flex; align-items:center; gap:10px}
   .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);transition:background-color .65s ease}
   .name{font-family:"Fraunces",Georgia,serif; font-weight:500; font-size:clamp(40px,7vw,78px); line-height:1.02; letter-spacing:-.01em; margin:22px 0 24px; min-height:1.1em}
-  .name .ch{display:inline-block; white-space:pre}
+  .name .ch{display:inline-block}
   .name .ch.live{color:var(--accent)}
-  .lead{font-size:clamp(19px,2.8vw,28px); line-height:1.4; max-width:26ch; margin:0 auto}
-  .lead .ch{display:inline-block; white-space:pre}
+  .lead{font-size:clamp(19px,2.8vw,28px); line-height:1.4; max-width:26ch; margin:0 auto; overflow-wrap:break-word}
+  .lead .ch{display:inline-block}
   .lead .ch.live{color:var(--accent)}
   .hero-controls{margin-top:30px; display:flex; flex-direction:column; align-items:center; gap:12px}
   .flip-hint{font-family:"Space Mono",monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
@@ -83,8 +83,9 @@
   .seg h2{font-family:"Fraunces",serif; font-weight:500; font-size:clamp(24px,3.6vw,38px); margin:12px 0 6px; line-height:1.12}
   .badge{display:inline-block; font-family:"Space Mono",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent3); border:1px solid var(--accent3); border-radius:18px; padding:4px 10px; margin-left:8px; vertical-align:middle; transition:color .65s ease, border-color .65s ease}
 
-  .row-lead{font-size:clamp(17px,2.3vw,22px); line-height:1.5; max-width:38ch; margin-top:18px}
-  .row-lead .ch, .lead .ch{white-space:pre}
+  .row-lead{font-size:clamp(17px,2.3vw,22px); line-height:1.5; max-width:62ch; margin-top:18px; overflow-wrap:break-word}
+  .word{display:inline-block; white-space:nowrap}
+  .label, .btitle{overflow-wrap:break-word}
   .row-lead .ch.live{color:var(--accent)}
 
   /* inline hover translations */
@@ -165,7 +166,7 @@
   .bcard:hover{transform:translateY(-4px)}
   .btag{font-family:"Space Mono",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent3); transition:color .65s ease}
   .btitle{font-family:"Fraunces",serif; font-weight:500; font-size:20px; line-height:1.25; margin:14px 0 0; min-height:78px}
-  .btitle .ch{white-space:pre}
+  .btitle .ch{display:inline-block}
   .btitle .ch.live{color:var(--accent)}
   .bstatus{margin-top:16px; font-family:"Space Mono",monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
 
@@ -418,17 +419,24 @@
   function render(el, text, deco){
     if(reduce){ el.textContent = text; if(deco) decorate(el); return; }
     cancelAnimationFrame(rafs.get(el));
-    const chars = text.split(""); el.innerHTML = "";
-    const spans = chars.map(c => { const s=document.createElement("span"); s.className="ch"; s.textContent=c===" "?"\u00A0":c; el.appendChild(s); return s; });
+    el.innerHTML = "";
+    const items = [];
+    const words = text.split(" ");
+    words.forEach((word, wi) => {
+      const w = document.createElement("span"); w.className = "word";
+      for(const c of word){ const s=document.createElement("span"); s.className="ch"; s.textContent=c; w.appendChild(s); items.push(s); }
+      el.appendChild(w);
+      if(wi < words.length - 1) el.appendChild(document.createTextNode(" "));
+    });
+    const targets = items.map(s => s.textContent);
     const start = performance.now(), perChar = 12, settle = 280;
     function frame(now){
       let done = true;
-      chars.forEach((target,i) => {
-        if(target===" ") return;
+      items.forEach((s,i) => {
         const t = now - start - i*perChar;
-        if(t<0){ spans[i].textContent="\u00A0"; spans[i].classList.add("live"); done=false; }
-        else if(t<settle){ spans[i].textContent=GLYPHS[(Math.random()*GLYPHS.length)|0]; spans[i].classList.add("live"); done=false; }
-        else { spans[i].textContent=target; spans[i].classList.remove("live"); }
+        if(t<0){ s.textContent="\u00A0"; s.classList.add("live"); done=false; }
+        else if(t<settle){ s.textContent=GLYPHS[(Math.random()*GLYPHS.length)|0]; s.classList.add("live"); done=false; }
+        else { s.textContent=targets[i]; s.classList.remove("live"); }
       });
       if(done){ if(deco) decorate(el); }
       else rafs.set(el, requestAnimationFrame(frame));
